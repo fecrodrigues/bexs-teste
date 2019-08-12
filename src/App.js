@@ -1,5 +1,5 @@
 import React from 'react';
-import Payment from './views/payment/Payment';
+import Payment from './views/payment';
 
 function App() {
   return (

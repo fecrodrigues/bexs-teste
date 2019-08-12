@@ -5,7 +5,8 @@ import Cards from 'react-credit-cards';
 import IMask from 'imask';
 import 'react-credit-cards/es/styles-compiled.css';
 
-import PageNavbar from '../../components/navbar/PageNavbar';
+//Importando a navbar para ser utilizada na página
+import PageNavbar from '../../components/navbar';
 
 //Carregando as classes css da pagina
 import './payment.css';
@@ -15,6 +16,7 @@ class Payment extends Component {
     constructor() {
         super();
 
+        //Iniciando os valores do formulario
         this.state = {
             cardNumber: '',
             cardCode: '',
@@ -24,12 +26,20 @@ class Payment extends Component {
         }
     }
 
+    /*
+    * Utilizando o método nativo do react que é disparado logo após o componente ser
+    * renderizado para aplicar as mascaras utilizando o componente IMask
+    */
     componentDidMount() {
         this.applyMask('cardNumber', '0000 0000 0000 0000'); 
         this.applyMask('cardDate', '00/00');
         this.applyMask('cardCode', '000'); 
     }
 
+    /*
+    * Extraindo a lógica de aplicação de mascara em um input
+    * evitando assim repetição de código.
+    */
     applyMask = (elementID, mask) => {
         let element = document.getElementById(elementID);
         let maskOptions = { mask: mask };
@@ -37,11 +47,26 @@ class Payment extends Component {
         IMask(element, maskOptions);
     }
 
+    /*
+    * Método chamado no evento onChange dos inputs para atualizar os valores
+    * dos mesmos em suas respectivas variavies de estado do react.
+    */
     handleChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
+        this.setState({
+            [name]: value
+        });
+    }
+
+
+    /*
+    * Método que verifica qual o input que o usuário está interagindo no momento
+    * e aplica o foco no compomente de cartão.
+    */
+    focusCard = (name, value) => {
         switch(name) {
             case 'cardNumber':
                 this.setState({ focused: "number" });
@@ -62,26 +87,40 @@ class Payment extends Component {
             default:
                 this.setState({ focused: "number" });
         }
-
-        this.setState({
-            [name]: value
-        });
     }
 
+
+    /* Método chamado ao enviar o formulario (onSubmit) */
     sendCardInfo = (e) => {
         e.preventDefault();
         if(!this.validateInputs(e.target)) {
-            console.log('enviou')
+            console.log('enviou', this.state)
         }
     }
 
+    /* 
+    *  Método que valida se os inputs estão preenchidos e caso 
+    *  não estejam adiciona o feedback negativo na tela através da classe invalid
+    */
     validateInputs = (form) => {
         let invalidForm = false;
         const elements = form.elements;
 
         for (var i = 0; i < elements.length;i++) {
-            if(elements[i] && !this.state[elements[i].name]) {
-                invalidForm = true;
+            if( elements[i] && 
+                (elements[i].nodeName === 'INPUT' || elements[i].nodeName === 'SELECT') 
+                && !this.state[elements[i].name]) {
+
+                /* 
+                *
+                * Verificando se o input não é dropdown validando assim somente 
+                * o select e não o input criado pelo component react-materialize.
+                * 
+                */
+                if(!elements[i].classList.contains('select-dropdown')) {
+                    invalidForm = true;
+                }
+               
                 elements[i].classList.add("invalid");
             }
         }
@@ -92,13 +131,13 @@ class Payment extends Component {
     render() {
         return (
             <div>
+                {/* utilizando a navbar importada na página */}
                 <PageNavbar></PageNavbar>
 
                 <div className="content payment-container">
                     <div className="row flex-content">
                         
-                    
-
+                        {/* Div contendo as informações do lado esquerdo (parte em vermelho) do pagamento */}
                         <div className="card-container">
                             
                             <div className="step-info">
@@ -126,7 +165,9 @@ class Payment extends Component {
                             </div>
                             
                         </div>
+                        {/* Fim div card-container */}
 
+                        {/* Div contendo as informações do lado direito (formulario) do pagamento */}
                         <div className="form-container">
 
                             <div className="row desktop-steps">
@@ -198,14 +239,16 @@ class Payment extends Component {
                                     </div>
                                 </form>
                             </div>
-                            
-                            
+                            {/* fim row */}
                             
                         </div>
+                        {/* Fim div form-container */}
                     </div>
+                    {/* Fim flex-content */}
                    
 
                 </div>
+                {/* Fim pagamento-container */}
             </div>
         )
     }
