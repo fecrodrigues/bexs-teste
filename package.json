@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "imask": "^5.1.9",
     "react": "^16.9.0",
+    "react-credit-cards": "^0.7.0",
     "react-dom": "^16.9.0",
+    "react-imask": "^5.1.9",
+    "react-materialize": "^3.3.4",
     "react-scripts": "3.1.0"
   },
   "scripts": {
