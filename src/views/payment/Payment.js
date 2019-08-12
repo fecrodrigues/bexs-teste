@@ -5,7 +5,10 @@ import Cards from 'react-credit-cards';
 import IMask from 'imask';
 import 'react-credit-cards/es/styles-compiled.css';
 
-import PageNavbar from './../components/PageNavbar';
+import PageNavbar from '../../components/navbar/PageNavbar';
+
+//Carregando as classes css da pagina
+import './payment.css';
 
 class Payment extends Component {
 

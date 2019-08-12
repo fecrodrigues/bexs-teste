@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem } from 'react-materialize';
 
+//Carregandos estilos da navbar
+import './navbar.css';
 
 class PageNavbar extends Component {
 
