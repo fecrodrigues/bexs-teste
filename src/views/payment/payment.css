@@ -139,35 +139,6 @@ input:focus {
     color: #9e9e9e !important;
 }
 
-/* formatando container com informações do pedido */
-.info-container {
-    margin-left: 10px;
-    padding: 40px 10px 20px 10px !important;
-    background-color: #fff;
-    width: 20%;
-    height: 200px;
-}
-
-.info-container > .info {
-    background-color: #F7F7F7;
-    width: 100%;
-    padding: 7px;
-    margin: 5px;
-}
-
-.info-container > .info.left {
-    width: 75%;
-}
-
-.info-container > .info.right {
-    width: 15%;
-}
-
-
-.info-container > .info.result {
-    background-color: #C9C9C9;
-}
-
 /*
 *
 * Ajustes para displays acima de 769px 
@@ -180,7 +151,7 @@ input:focus {
     }
 
     .payment-container {
-        margin-top: 100px;
+        margin-top: 3%;
     }
 
     .step-info {
@@ -242,21 +213,5 @@ input:focus {
     
     .rccs__card--back {
         width: 295px;
-    }
-
-    .info-container {
-        display:none;
-    }
-
-}
-
-/*
-*
-* Ajustes para displays até 1110px 
-*
-*/
-@media (max-width: 1110px) {
-    .info-container {
-        display:none;
     }
 }

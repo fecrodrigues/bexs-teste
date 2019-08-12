@@ -7,6 +7,7 @@ import 'react-credit-cards/es/styles-compiled.css';
 
 //Importando a navbar para ser utilizada na página
 import PageNavbar from '../../components/navbar';
+import OrderInfo from '../../components/order-info';
 
 //Carregando as classes css da pagina
 import './payment.css';
@@ -243,18 +244,9 @@ class Payment extends Component {
                             
                         </div>
                         {/* Fim div form-container */}
-
-                        {/* Inicio info-container */}
-                        <div className="info-container">
-                            <div class="info"></div>
-                            <hr/>
-                            <div class="info left"></div> <div class="info right"></div>
-                            <div class="info left"></div> <div class="info right"></div>
-                            <div class="info left"></div> <div class="info right"></div>
-                            
-                            <div class="info left result"></div> <div class="info right result"></div>
-                        </div>
-                        {/* fim info-container */}
+                        
+                        {/* importando componente com informações do pedido */}
+                        <OrderInfo/>
 
                     </div>
                     {/* Fim flex-content */}
