@@ -5,7 +5,7 @@ import Cards from 'react-credit-cards';
 import IMask from 'imask';
 import 'react-credit-cards/es/styles-compiled.css';
 
-//Importando a navbar para ser utilizada na página
+//Importando componentes internos a serem utilizados na página
 import PageNavbar from '../../components/navbar';
 import OrderInfo from '../../components/order-info';
 
@@ -56,6 +56,8 @@ class Payment extends Component {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
+
+        this.focusCard(name, value);
 
         this.setState({
             [name]: value
@@ -156,13 +158,13 @@ class Payment extends Component {
                             </div>
 
                             <div className="credit-card">
-                            <Cards
-                            number={this.state.cardNumber}
-                            name={this.state.cardName}
-                            expiry={this.state.cardDate}
-                            cvc={this.state.cardCode}
-                            focused={this.state.focused}
-                            />
+                                <Cards
+                                    number={this.state.cardNumber}
+                                    name={this.state.cardName}
+                                    expiry={this.state.cardDate}
+                                    cvc={this.state.cardCode}
+                                    focused={this.state.focused}
+                                    />
                             </div>
                             
                         </div>

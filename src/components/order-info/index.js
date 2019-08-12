@@ -7,14 +7,14 @@ class OrderDetail extends Component {
     render() {
         return (
             <div className="info-container">
-                <div class="info"></div>
+                <div className="info"></div>
                 <hr/>
-                <div class="info left"></div> <div class="info right"></div>
-                <div class="info left"></div> <div class="info right"></div>
-                <div class="info left"></div> <div class="info right"></div>
+                <div className="info left"></div> <div className="info right"></div>
+                <div className="info left"></div> <div className="info right"></div>
+                <div className="info left"></div> <div className="info right"></div>
                 
                 
-                <div class="info left result"></div> <div class="info right result"></div>
+                <div className="info left result"></div> <div className="info right result"></div>
             </div>
         ) 
     }

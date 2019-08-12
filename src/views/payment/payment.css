@@ -166,6 +166,10 @@ input:focus {
         padding-left: 10% !important;
     }
 
+    .rccs__card--back {
+        left: -72px;
+    }
+
 }
 
 /*
