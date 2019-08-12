@@ -65,9 +65,25 @@ class Payment extends Component {
         });
     }
 
-    sendCardInfo(e) {
+    sendCardInfo = (e) => {
         e.preventDefault();
-        console.log('enviou')
+        if(!this.validateInputs(e.target)) {
+            console.log('enviou')
+        }
+    }
+
+    validateInputs = (form) => {
+        let invalidForm = false;
+        const elements = form.elements;
+
+        for (var i = 0; i < elements.length;i++) {
+            if(elements[i] && !this.state[elements[i].name]) {
+                invalidForm = true;
+                elements[i].classList.add("invalid");
+            }
+        }
+
+        return invalidForm;
     }
 
     render() {
@@ -118,7 +134,7 @@ class Payment extends Component {
 
                             <div className="row">
 
-                                <form onSubmit={this.sendCardInfo}>
+                                <form noValidate onSubmit={this.sendCardInfo}>
                                     <TextInput
                                         id="cardNumber"
                                         name="cardNumber"
