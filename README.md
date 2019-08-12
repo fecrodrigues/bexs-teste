@@ -21,14 +21,14 @@ Desenvolver uma aplicação front-end de acordo com as especificações descrita
 
     O Projeto está dividido na seguinte estrutura:
   
-  - public: Utilizada para armazenar os arquivos estaticos do projeto. Onde se encontra o index.html.
-  - src: Contém todo o código da aplicação.
-        - components: É onde ficam armazenados todos os componentes que podem ser utilizados pelas views.
-        - services: É responsavel pela conversa com o backend (conversas com apis)
-        - views: É onde ficam localizadas as páginas a serem exibidas.
-        - app.js: Componente raiz do projeto , porta de entrada de todos os outros.
-        - index.css: Onde ficam armazenados os estilos em comum.
-        - index.js: arquivo responsável por iniciar o react no projeto.
+- `public`: Utilizada para armazenar os arquivos estaticos do projeto. Onde se encontra o index.html.
+- `src`: Contém todo o código da aplicação.    
+- `components`: É onde ficam armazenados todos os componentes que podem ser utilizados pelas views.
+- `services`: É responsavel pela conversa com o backend (conversas com apis)
+- `views`: É onde ficam localizadas as páginas a serem exibidas.
+- `app.js`: Componente raiz do projeto , porta de entrada de todos os outros.
+- `index.css`: Onde ficam armazenados os estilos em comum.
+- `index.js`: arquivo responsável por iniciar o react no projeto.
 
     Foi pensada nessa estrutura por ser simples e organizada, componentes reutilizaveis serão criados na pasta `components`, conversas com apis serão criadas na pasta `services` e criação de novas views serão feitas dentro da pasta `view`.
 
