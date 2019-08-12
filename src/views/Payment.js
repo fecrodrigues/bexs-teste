@@ -65,6 +65,11 @@ class Payment extends Component {
         });
     }
 
+    sendCardInfo(e) {
+        e.preventDefault();
+        console.log('enviou')
+    }
+
     render() {
         return (
             <div>
@@ -113,14 +118,16 @@ class Payment extends Component {
 
                             <div className="row">
 
-                                <form>
+                                <form onSubmit={this.sendCardInfo}>
                                     <TextInput
                                         id="cardNumber"
                                         name="cardNumber"
                                         onChange={this.handleChange} 
                                         s={12} 
                                         error="Número do cartão inválido"
-                                        label="Número do cartão" />
+                                        label="Número do cartão"
+                                        validate={true}
+                                        required />
 
                                     <TextInput
                                         id="cardName"
@@ -128,7 +135,9 @@ class Payment extends Component {
                                         onChange={this.handleChange}
                                         s={12}
                                         error="Insira seu nome completo" 
-                                        label="Nome (igual ao cartão)" />
+                                        label="Nome (igual ao cartão)"
+                                        validate={true}
+                                        required />
 
                                     <TextInput
                                         name="cardDate"
@@ -136,7 +145,9 @@ class Payment extends Component {
                                         onChange={this.handleChange}
                                         s={6}
                                         error="Data inválida" 
-                                        label="Validade" />
+                                        label="Validade"
+                                        validate={true}
+                                        required />
 
                                     <TextInput
                                         name="cardCode"
@@ -144,15 +155,18 @@ class Payment extends Component {
                                         onChange={this.handleChange}
                                         s={6}
                                         error="Código inválido" 
-                                        label="CVV" />
+                                        label="CVV"
+                                        validate={true}
+                                        required />
 
                                     <Select
                                         name="cardPortions"
                                         onChange={this.handleChange}
                                         s={12}
                                         error="Insira o número de parcelas"
-                                        value="">
-                                            <option value="" disabled>
+                                        validate={true}
+                                        required>
+                                            <option value="">
                                                 Número de parcelas
                                             </option>
                                             <option value="1">
@@ -160,12 +174,13 @@ class Payment extends Component {
                                             </option>
                                     </Select>
 
+                                    <div className="row submit-button">
+                                        <Button type="submit" large>Continuar</Button>
+                                    </div>
                                 </form>
                             </div>
                             
-                            <div className="row submit-button">
-                                <Button large>Continuar</Button>
-                            </div>
+                            
                             
                         </div>
                     </div>
