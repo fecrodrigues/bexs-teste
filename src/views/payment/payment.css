@@ -26,19 +26,6 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.step-info > a {
-    color: #fff;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.step-info > a > strong {
-    font-weight: bold;
-}
-
-.step-info > i {
-    float: left;
-}
-
 .add-card {
     display: flex;
     justify-content: center;
@@ -76,28 +63,8 @@
     border-color: #DE4B4B;
 }
 
-.desktop-steps {
-    color: #DE4B4B;
-    display: flex;
-    justify-content: space-around;
-}
-
 input:focus {
     border-color: #DE4B4B;
-}
-
-.desktop-steps > span {
-    text-align: center;
-    border-radius: 50%;
-    border: 2px solid #DE4B4B;
-    font-weight: bold;
-    padding: 0px 5px 0px 5px;
-}
-
-.desktop-steps > span.checked {
-    background-color: #DE4B4B;
-    color: #fff;
-    padding: 0px;
 }
 
 .material-icons {
@@ -163,10 +130,6 @@ input:focus {
 
     .payment-container {
         margin-top: 3%;
-    }
-
-    .step-info {
-        display: none;
     }
 
     .credit-card {

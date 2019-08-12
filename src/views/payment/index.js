@@ -8,6 +8,7 @@ import 'react-credit-cards/es/styles-compiled.css';
 //Importando componentes internos a serem utilizados na página
 import PageNavbar from '../../components/navbar';
 import OrderInfo from '../../components/order-info';
+import Steps from '../../components/steps';
 
 //Importando servico que chama
 import PaymentService from './../../services/payment.service';
@@ -173,10 +174,7 @@ class Payment extends Component {
                         {/* Div contendo as informações do lado esquerdo (parte em vermelho) do pagamento */}
                         <div className="card-container">
                             
-                            <div className="step-info">
-                                <i className="small material-icons">chevron_left</i>
-                                <a href="#!"><strong>Etapa 2</strong> de 3 </a>
-                            </div>
+                            <Steps type="mobile" active={2} total={3} />
                             
                             <a href="#!"><i className="small material-icons">chevron_left</i> Alterar forma de pagamento</a>
                             
@@ -203,11 +201,8 @@ class Payment extends Component {
                         {/* Div contendo as informações do lado direito (formulario) do pagamento */}
                         <div className="form-container">
 
-                            <div className="row desktop-steps">
-                                    <span className="checked"><i className="Tiny material-icons">check</i></span> Carrinho <i className="small material-icons">chevron_right</i>
-                                    <span>2</span> Pagamento <i className="small material-icons">chevron_right</i>
-                                    <span>3</span> Confirmação
-                            </div>
+                            <Steps type="desktop" active={1}
+                                steps={['Carrinho', 'Pagamento', 'Confirmação']} />
 
                             <div className="row">
 

@@ -1,0 +1,43 @@
+/*
+*
+* Estilos das barras de exibição de passos
+*
+*/
+.desktop-steps {
+    color: #DE4B4B;
+    display: flex;
+    justify-content: space-around;
+}
+
+.desktop-steps > span {
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid #DE4B4B;
+    font-weight: bold;
+    padding: 0px 5px 0px 5px;
+}
+
+.desktop-steps > span.checked {
+    background-color: #DE4B4B;
+    color: #fff;
+    padding: 0px;
+}
+
+.step-info > a {
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.step-info > a > strong {
+    font-weight: bold;
+}
+
+.step-info > i {
+    float: left;
+}
+
+@media (min-width: 769px) {
+    .step-info {
+        display: none;
+    }
+}
