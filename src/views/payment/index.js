@@ -60,6 +60,11 @@ class Payment extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
+        if(target.nodeName === 'SELECT') {
+            let inputSelect =  document.getElementsByClassName('select-dropdown')[0];
+            inputSelect.classList.remove('invalid');
+        }
+
         this.focusCard(name, value);
 
         this.setState({
@@ -130,9 +135,26 @@ class Payment extends Component {
                 */
                 if(!elements[i].classList.contains('select-dropdown')) {
                     invalidForm = true;
+                    elements[i].classList.add("invalid");
+                } else {
+                    /* Adicionando mensagem de erro no select manualmente devido ao framework 
+                     * não validar o select como faz nos inputs 
+                    */
+                    if(!this.state.cardPortions) {
+                        if(!document.getElementById('select-error')) {
+                            var errorSpan = document.createElement("SPAN");
+                            errorSpan.setAttribute('id', 'select-error');
+                            errorSpan.setAttribute('class', 'helper-text');
+                            errorSpan.setAttribute('data-error', 'Selecione o número de parcelas');
+        
+                            elements[i].parentNode.insertBefore(errorSpan, elements[i].nextSibling);
+
+                            elements[i].classList.add("invalid");
+                        }
+                    }
+                   
                 }
                
-                elements[i].classList.add("invalid");
             }
         }
 
