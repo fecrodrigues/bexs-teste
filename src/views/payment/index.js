@@ -9,6 +9,9 @@ import 'react-credit-cards/es/styles-compiled.css';
 import PageNavbar from '../../components/navbar';
 import OrderInfo from '../../components/order-info';
 
+//Importando servico que chama
+import PaymentService from './../../services/payment.service';
+
 //Carregando as classes css da pagina
 import './payment.css';
 
@@ -96,8 +99,13 @@ class Payment extends Component {
     /* Método chamado ao enviar o formulario (onSubmit) */
     sendCardInfo = (e) => {
         e.preventDefault();
-        if(!this.validateInputs(e.target)) {
-            console.log('enviou', this.state)
+        if(!this.checkFormErros(e.target)) {
+            
+            /* chamando servico mock para salvar cartão */
+            const paymentService = new PaymentService();
+            paymentService.saveCard(this.state).then((result) => {
+                alert(result.message);
+            });
         }
     }
 
@@ -105,7 +113,7 @@ class Payment extends Component {
     *  Método que valida se os inputs estão preenchidos e caso 
     *  não estejam adiciona o feedback negativo na tela através da classe invalid
     */
-    validateInputs = (form) => {
+    checkFormErros = (form) => {
         let invalidForm = false;
         const elements = form.elements;
 
@@ -223,10 +231,10 @@ class Payment extends Component {
                                         required />
 
                                     <Select
-                                        name="cardPortions"
                                         onChange={this.handleChange}
+                                        name="cardPortions"
                                         s={12}
-                                        error="Insira o número de parcelas"
+                                        error="Selecione o número de parcelas"
                                         validate={true}
                                         required>
                                             <option value="">
